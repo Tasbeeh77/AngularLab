@@ -1,0 +1,29 @@
+<app-add-depatment-component (onDepartmentAdd)="AddDepartment($event)"></app-add-depatment-component>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>#</td>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Capacity</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="" *ngFor="let item of Department;let i=index;let f=odd">
+                <td>{{f}}</td>
+                <td> {{item.id}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Capacity}}</td>
+                <td>
+                    <button (click)="ShowDetails(item.id)">Details</button>
+                    <button (click)="DeleteDepartment(item.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-department-details [DepartmentDetails]="dept" *ngIf="detailsFlag"
+    (onHide)="detailsFlag=$event"></app-department-details>
+<app-department-edit (onDepartmentEdit)="EditDepartment($event)"></app-department-edit>
